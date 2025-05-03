@@ -1,12 +1,21 @@
 --[[
-Vai tomar no cu woj
 
+░██████╗░░█████╗░███╗░░░███╗███████╗░██████╗███████╗███╗░░██╗░██████╗███████╗
+██╔════╝░██╔══██╗████╗░████║██╔════╝██╔════╝██╔════╝████╗░██║██╔════╝██╔════╝
+██║░░██╗░███████║██╔████╔██║█████╗░░╚█████╗░█████╗░░██╔██╗██║╚█████╗░█████╗░░
+██║░░╚██╗██╔══██║██║╚██╔╝██║██╔══╝░░░╚═══██╗██╔══╝░░██║╚████║░╚═══██╗██╔══╝░░
+╚██████╔╝██║░░██║██║░╚═╝░██║███████╗██████╔╝███████╗██║░╚███║██████╔╝███████╗
+░╚═════╝░╚═╝░░╚═╝╚═╝░░░░░╚═╝╚══════╝╚═════╝░╚══════╝╚═╝░░╚══╝╚═════╝░╚══════╝
+
+Skeet Skeet number #1 cheat!
+
+Developer Note: If you somehow got your hands on the source code then idk man what can i do lol. I tried to keep the code as clean as possible so uhhhh yeah idk
 ]]
 
 --// Loaded Check
 
 if getgenv().gamesense and getgenv().gamesense.loaded then
-	warn("FS ALREADY LOADED GG")
+	warn("GS ALREADY LOADED GG")
 	return
 end
 getgenv().gamesense = {loaded = true}
@@ -37,15 +46,15 @@ Library.ForceCheckbox = false
 Library.ShowToggleFrameInKeybinds = true
 
 local Window = Library:CreateWindow({
-	Title = "yankuizaOnTop",
-	Footer = "version: BETA",
-	Icon = false,
+	Title = "imperius.mps",
+	Footer = "version: ALPHA",
+	Icon = 0,
 	NotifySide = "Right",
 	ShowCustomCursor = true,
 })
 
 local Tabs = {
-	Key = Window:AddKeyTab("Credits"),
+	Key = Window:AddKeyTab("Key System", "key"),
 }
 
 --// Key System
@@ -68,7 +77,7 @@ if isfile("gs-key.cfg") then
 end
 Tabs.Key:AddKeyBox(function(Success, ReceivedKey)
 	if not Activated then
-		local KeyRequest = game:HttpGet("https://work.ink/_api/v2/token/isValid/%22..ReceivedKey)
+		local KeyRequest = game:HttpGet("https://work.ink/_api/v2/token/isValid/"..ReceivedKey)
 		if KeyRequest then
 			local KeyData = HTTPService:JSONDecode(KeyRequest)
 			if KeyData.valid then
@@ -95,7 +104,7 @@ repeat
 	task.wait()
 until Activated == true
 
---///// RESTO DO CODIGO (segurança)
+--///// REST OF THE CODE (shit security lol)
 
 --///// Variables
 --// Tables
@@ -341,7 +350,7 @@ local function CreateReachTab(TabsElement, ReachType)
 		Text = "Size X",
 		Default = 0,
 		Min = 0,
-		Max = 200,
+		Max = 25,
 		Rounding = 1,
 		Tooltip = "Sets the "..string.lower(ReachType).." reach X size.",
 	})
@@ -349,7 +358,7 @@ local function CreateReachTab(TabsElement, ReachType)
 		Text = "Size Y",
 		Default = 0,
 		Min = 0,
-		Max = 200,
+		Max = 25,
 		Rounding = 1,
 		Tooltip = "Sets the "..string.lower(ReachType).." reach Y size.",
 	})
@@ -357,7 +366,7 @@ local function CreateReachTab(TabsElement, ReachType)
 		Text = "Size Z",
 		Default = 0,
 		Min = 0,
-		Max = 200,
+		Max = 25,
 		Rounding = 1,
 		Tooltip = "Sets the "..string.lower(ReachType).." reach Z size.",
 	})
@@ -1147,12 +1156,12 @@ task.spawn(function()
 	end
 end)
 
--- visual basico
+-- this is so fucking ass i dont know on what drug i was on while making this
 if PingRemote and PingHandler then
 	task.spawn(function()
 		while task.wait(Options.PingSpoofHZ.Value) do
 			if Toggles.PingSpoofToggle.Value then
-				PingRemote:FireServer(math.clamp(Options.PingSpoof.Value + math.random(-Options.PingSpoofSpike.Value, Options.PingSpoofSpike.Value), 0, math.huge))
+				PingRemote:FireServer(math.clamp(Options.PingSpoof.Value + math.random(-Options.PingSpoofSpike.Value, Options.PingSpoofSpike.Value), 15, math.huge))
 			end
 		end
 	end)
